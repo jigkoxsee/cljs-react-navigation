@@ -7,7 +7,7 @@
                  [org.clojure/clojurescript "1.9.854"]
                  [reagent "0.7.0" :exclusions [cljsjs/react cljsjs/react-dom cljsjs/react-dom-server cljsjs/create-react-class]]
                  [re-frame "0.9.3"]
-                 [cljs-react-navigation "0.1.0"]
+                 [cljs-react-navigation "0.1.4"]
                  [react-native-externs "0.1.0"]]
   :plugins [[lein-cljsbuild "1.1.4"]
             [lein-figwheel "0.5.11"]]
@@ -20,7 +20,7 @@
             ["externs"
              ["with-profile" "prod" "cljsbuild" "once" "main"]]}
 
-  :jvm-opts ["--add-modules" "java.xml.bind"]
+  ;:jvm-opts ["--add-modules" "java.xml.bind"]
 
   :profiles {:dev {:dependencies [[figwheel-sidecar "0.5.10"]
                                   [com.cemerick/piggieback "0.2.1"]]

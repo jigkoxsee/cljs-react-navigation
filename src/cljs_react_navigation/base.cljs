@@ -22,14 +22,16 @@
 
 ;; Navigators
 (defonce createNavigator (gobj/get ReactNavigation #js ["createNavigator"]))
-(defonce StackNavigator (gobj/get ReactNavigation #js ["StackNavigator"]))
+(defonce StackNavigator (gobj/get ReactNavigation #js ["createStackNavigator"]))
 (defonce TabNavigator (gobj/get ReactNavigation #js ["TabNavigator"]))
-(defonce DrawerNavigator (gobj/get ReactNavigation #js ["DrawerNavigator"]))
-(defonce SwitchNavigator (gobj/get ReactNavigation #js ["SwitchNavigator"]))
+(defonce BottomTabNavigator (gobj/get ReactNavigation #js ["createBottomTabNavigator"]))
+(defonce MaterialTabNavigator (gobj/get ReactNavigation #js ["createMaterialTabNavigator"]))
+(defonce DrawerNavigator (gobj/get ReactNavigation #js ["createDrawerNavigator"]))
+(defonce SwitchNavigator (gobj/get ReactNavigation #js ["createSwitchNavigator"]))
 
 ;; Routers
-(defonce StackRouter (gobj/get ReactNavigation #js ["StackRouter"]))
-(defonce TabRouter (gobj/get ReactNavigation #js ["TabRouter"]))
+(defonce StackRouter (gobj/get ReactNavigation #js ["createStackRouter"]))
+(defonce TabRouter (gobj/get ReactNavigation #js ["createTabRouter"]))
 
 ;; Views
 (defonce Transitioner (gobj/get ReactNavigation #js ["Transitioner"]))
@@ -319,6 +321,21 @@
     (assert (not= routeConfigs-conformed :cljs.spec.alpha/invalid))
     (assert (not= navigationOptions-conformed :cljs.spec.alpha/invalid))
     (TabNavigator (clj->js routeConfigs-conformed) (clj->js navigationOptions-conformed))))
+
+(defn bottom-tab-navigator [routeConfigs navigationOptions]
+  (let [routeConfigs-conformed (s/conform :react-navigation/RouteConfigs routeConfigs)
+        navigationOptions-conformed (s/conform :react-navigation/navigationOptions navigationOptions)]
+    (assert (not= routeConfigs-conformed :cljs.spec.alpha/invalid))
+    (assert (not= navigationOptions-conformed :cljs.spec.alpha/invalid))
+    (BottomTabNavigator (clj->js routeConfigs-conformed) (clj->js navigationOptions-conformed))))
+
+(defn material-tab-navigator [routeConfigs navigationOptions]
+  (let [routeConfigs-conformed (s/conform :react-navigation/RouteConfigs routeConfigs)
+        navigationOptions-conformed (s/conform :react-navigation/navigationOptions navigationOptions)]
+    (assert (not= routeConfigs-conformed :cljs.spec.alpha/invalid))
+    (assert (not= navigationOptions-conformed :cljs.spec.alpha/invalid))
+    (MaterialTabNavigator (clj->js routeConfigs-conformed) (clj->js navigationOptions-conformed))))
+
 
 (defn drawer-navigator [routeConfigs drawerNavigatorConfig]
   (let [routeConfigs-conformed (s/conform :react-navigation/RouteConfigs routeConfigs)

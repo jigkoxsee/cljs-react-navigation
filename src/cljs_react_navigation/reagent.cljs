@@ -74,5 +74,7 @@
 (def drawer-component base/drawer-component)
 (def stack-navigator base/stack-navigator)
 (def tab-navigator base/tab-navigator)
+(def bottom-tab-navigator base/bottom-tab-navigator)
+(def material-tab-navigator base/material-tab-navigator)
 (def drawer-navigator base/drawer-navigator)
 (def switch-navigator base/switch-navigator)
